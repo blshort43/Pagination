@@ -70,13 +70,13 @@ const Pagination = ({
       <KeyboardArrowLeft
         style={{ marginRight: '20px' }}
         size="1.5rem"
-        color={page === 0 && '#dcdcdc'}
+        color={page === 0 ? '#dcdcdc' : '#727272'}
         onClick={e => handleDecrement(e)}
       />
 
       <KeyboardArrowRight
         size="1.5rem"
-        color={page === totalPages && '#dcdcdc'}
+        color={page === totalPages ? '#dcdcdc' : '#727272'}
         onClick={e => handleIncrement(e)}
       />
     </PaginationContainer>

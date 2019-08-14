@@ -52,6 +52,16 @@ const Pagination = ({
     onChangeRowsPerPage(e);
   };
 
+  const handleRowCount = () => {
+    const currentRow = rowsPerPage * page + 1;
+    const rowsTotal = Math.min(count, (page + 1) * rowsPerPage);
+
+    if (rowsTotal > 0) {
+      return `${currentRow}-${rowsTotal} of ${count}`;
+    }
+    return `${count} of ${count}`;
+  };
+
   return (
     <PaginationContainer>
       <ControlsContainer>
@@ -62,8 +72,7 @@ const Pagination = ({
           <option value={50}>50</option>
           <option value={100}>100</option>
         </StyledSelect>
-        {rowsPerPage * page + 1}-{Math.min(count, (page + 1) * rowsPerPage)} of{' '}
-        {count}
+        {handleRowCount()}
       </ControlsContainer>
 
       <KeyboardArrowLeft

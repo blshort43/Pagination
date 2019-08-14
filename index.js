@@ -65,7 +65,6 @@ const Pagination = ({
         {rowsPerPage * page + 1}-{Math.min(count, (page + 1) * rowsPerPage)} of{' '}
         {count}
       </ControlsContainer>
-      {/* <ControlsContainer>Page: {page + 1}</ControlsContainer> */}
 
       <KeyboardArrowLeft
         style={{ marginRight: '20px' }}
@@ -76,8 +75,10 @@ const Pagination = ({
 
       <KeyboardArrowRight
         size="1.5rem"
-        color={page === totalPages ? '#dcdcdc' : '#727272'}
-        onClick={e => handleIncrement(e)}
+        color={page === totalPages || totalPages < 0 ? '#dcdcdc' : '#727272'}
+        onClick={
+          totalPages > 0 ? e => handleIncrement(e) : e => e.preventDefault()
+        }
       />
     </PaginationContainer>
   );
